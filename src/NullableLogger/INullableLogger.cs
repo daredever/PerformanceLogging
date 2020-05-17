@@ -1,6 +1,6 @@
-﻿﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
- namespace NullableLogger
+namespace NullableLogger
 {
     public interface INullableLogger : ILogger
     {
