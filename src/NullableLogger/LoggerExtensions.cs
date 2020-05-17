@@ -6,7 +6,7 @@ namespace NullableLogger
     {
         public static INullableLogger Wrap(this ILogger logger)
         {
-            return logger is null ? null : new NullableLogger(logger);
+            return new NullableLogger(logger);
         }
 
         public static LogWithLevel? Trace(this ILogger logger) =>
