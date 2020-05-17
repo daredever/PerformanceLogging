@@ -18,7 +18,6 @@ namespace DemoApp
 
             // Create logger.
             var logger = loggerFactory.CreateLogger<Program>();
-
             using (logger.BeginScope("default logger"))
             {
                 // Write trace logs in classic way.
@@ -36,7 +35,7 @@ namespace DemoApp
             using (wrappedLogger.BeginScope("wrapped logger"))
             {
                 // Writing trace logs in classic way is still available.
-                if (logger.IsEnabled(LogLevel.Trace))
+                if (wrappedLogger.IsEnabled(LogLevel.Trace))
                 {
                     wrappedLogger.LogTrace("Example log message in classic way by wrapped logger");
                 }
