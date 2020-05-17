@@ -11,6 +11,8 @@ See it on [github](https://github.com/JetBrains/rd/tree/master/rd-net/Lifetimes/
 Extensions:
 
 ```c#
+using NullableLogger;
+
 logger.Trace()?.Log("Message");
 logger.Debug()?.Log("Message");
 logger.Info()?.Log("Message");
@@ -24,6 +26,8 @@ or
 Wrap:
 
 ```c#
+using NullableLogger;
+
 var wrappedLogger = logger.Wrap();
 wrappedLogger.Trace?.Log("Message");
 wrappedLogger.Debug?.Log("Message");
