@@ -13,16 +13,37 @@ namespace DemoApp
             {
                 builder
                     .SetMinimumLevel(LogLevel.Trace)
-                    .AddConsole();
+                    .AddConsole(options => options.IncludeScopes = true);
             });
 
-            var logger = loggerFactory.CreateLogger<Program>().Wrap();
+            // Create logger.
+            var logger = loggerFactory.CreateLogger<Program>();
 
-            // classic way
-            logger.LogInformation("Example log message in classic way");
+            using (logger.BeginScope("default logger"))
+            {
+                // Write trace logs in classic way.
+                if (logger.IsEnabled(LogLevel.Trace))
+                {
+                    logger.LogTrace("Example log message in classic way");
+                }
 
-            // new way 
-            logger.Info?.Log("Example log message in new way");
+                // Write trace logs in new way with extension method. 
+                logger.Trace()?.Log("Example log message in new way");
+            }
+
+            // Create wrapped logger.
+            var wrappedLogger = logger.Wrap();
+            using (wrappedLogger.BeginScope("wrapped logger"))
+            {
+                // Writing trace logs in classic way is still available.
+                if (logger.IsEnabled(LogLevel.Trace))
+                {
+                    wrappedLogger.LogTrace("Example log message in classic way by wrapped logger");
+                }
+
+                // Write trace logs in new way by wrapped logger. 
+                wrappedLogger.Trace?.Log("Example log message in new way by wrapped logger");
+            }
 
             await Task.Delay(1000);
             await Console.Out.WriteLineAsync("Hello World!");
