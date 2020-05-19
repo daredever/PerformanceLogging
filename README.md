@@ -36,3 +36,5 @@ wrappedLogger.Warn?.Log("Message");
 wrappedLogger.Error?.Log("Message");
 wrappedLogger.Critical?.Log("Message");
 ```
+
+Package available on [Nuget.Org](https://www.nuget.org/packages/NullableLogger/) 
