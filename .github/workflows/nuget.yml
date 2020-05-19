@@ -27,7 +27,7 @@ jobs:
       uses: brandedoutcast/publish-nuget@v2.5.0
       with:
         # Filepath of the project to be packaged, relative to root of repository
-        PROJECT_FILE_PATH: src/NullableLogger
+        PROJECT_FILE_PATH: src/NullableLogger/NullableLogger.csproj
         # API key to authenticate with NuGet server
         NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
         
