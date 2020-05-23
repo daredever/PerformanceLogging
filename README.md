@@ -6,6 +6,8 @@ Project inspired by [JetBrains.RD](https://github.com/JetBrains/rd/tree/master/r
 
 **NullableLogger** usage example see at [DemoApp](/Demo/DemoApp) project.
 
+Package available on [Nuget.Org](https://www.nuget.org/packages/NullableLogger/) 
+
 ## Usage
 Extensions:
 
@@ -35,5 +37,3 @@ wrappedLogger.Warn?.Log("Message");
 wrappedLogger.Error?.Log("Message");
 wrappedLogger.Critical?.Log("Message");
 ```
-
-Package available on [Nuget.Org](https://www.nuget.org/packages/NullableLogger/) 
