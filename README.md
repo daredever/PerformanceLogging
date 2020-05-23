@@ -2,12 +2,11 @@
 DotNet logger wrapper for increase performance by more accurate works with strings.
 
 ## Summary
-Project inspired by _JetBrains.RD_ framework logging component. 
+Project inspired by [JetBrains.RD](https://github.com/JetBrains/rd/tree/master/rd-net/Lifetimes/Diagnostics) framework logging component.
 
-See it on [github](https://github.com/JetBrains/rd/tree/master/rd-net/Lifetimes/Diagnostics).
+**NullableLogger** usage example see at [DemoApp](/Demo/DemoApp) project.
 
-**NullableLogger** usage example see at _DemoApp_ project.
-
+## Usage
 Extensions:
 
 ```c#
