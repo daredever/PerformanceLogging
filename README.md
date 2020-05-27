@@ -1,12 +1,10 @@
-# NullableLogger
+# NullableLogger [![NuGet Version](http://img.shields.io/nuget/v/NullableLogger.svg?style=flat)](https://www.nuget.org/packages/NullableLogger/)
 DotNet logger wrapper for increase performance by more accurate works with strings.
 
 ## Summary
 Project inspired by [JetBrains.RD](https://github.com/JetBrains/rd/tree/master/rd-net/Lifetimes/Diagnostics) framework logging component.
 
 **NullableLogger** usage example see at [DemoApp](/Demo/DemoApp) project.
-
-Package available on [Nuget.Org](https://www.nuget.org/packages/NullableLogger/) 
 
 ## Usage
 Extensions:
