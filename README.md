@@ -12,12 +12,12 @@ Extensions:
 ```c#
 using NullableLogger;
 
-logger.Trace()?.Log("Message");
-logger.Debug()?.Log("Message");
-logger.Info()?.Log("Message");
-logger.Warn()?.Log("Message");
-logger.Error()?.Log("Message");
-logger.Critical()?.Log("Message");
+logger.Trace()?.Log($"message: {GetMessage()}.");
+logger.Debug()?.Log($"message: {GetMessage()}.");
+logger.Info()?.Log($"message: {GetMessage()}.");
+logger.Warn()?.Log($"message: {GetMessage()}.");
+logger.Error()?.Log($"message: {GetMessage()}.");
+logger.Critical()?.Log($"message: {GetMessage()}.");
 ```
 
 or 
@@ -28,10 +28,10 @@ Wrap:
 using NullableLogger;
 
 var wrappedLogger = logger.Wrap();
-wrappedLogger.Trace?.Log("Message");
-wrappedLogger.Debug?.Log("Message");
-wrappedLogger.Info?.Log("Message");
-wrappedLogger.Warn?.Log("Message");
-wrappedLogger.Error?.Log("Message");
-wrappedLogger.Critical?.Log("Message");
+wrappedLogger.Trace?.Log($"message: {GetMessage()}.");
+wrappedLogger.Debug?.Log($"message: {GetMessage()}.");
+wrappedLogger.Info?.Log($"message: {GetMessage()}.");
+wrappedLogger.Warn?.Log($"message: {GetMessage()}.");
+wrappedLogger.Error?.Log($"message: {GetMessage()}.");
+wrappedLogger.Critical?.Log($"message: {GetMessage()}.");
 ```
