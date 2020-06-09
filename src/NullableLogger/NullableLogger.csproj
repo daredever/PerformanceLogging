@@ -8,11 +8,11 @@
         <!-- Properties related to NuGet packaging: -->
         <IsPackable>True</IsPackable>
         <PackageId>NullableLogger</PackageId>
-        <Version>0.0.4</Version>
+        <Version>0.0.5</Version>
         <Authors>Roman Shcherbakov</Authors>
         <Title>NullableLogger: a simple logging wrapper library</Title>
         <Description>NullableLogger wrapper for increase performance by more accurate work with strings.</Description>
-        <PackageTags>log</PackageTags>
+        <PackageTags>log;logging</PackageTags>
         <PackageProjectUrl>https://github.com/daredever/NullableLogger</PackageProjectUrl>
         <RepositoryUrl>https://github.com/daredever/NullableLogger</RepositoryUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
