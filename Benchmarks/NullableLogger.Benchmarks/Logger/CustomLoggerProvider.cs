@@ -10,19 +10,11 @@ namespace NullableLogger.Benchmarks.Logger
         private readonly ConcurrentDictionary<string, CustomLogger> _loggers =
             new ConcurrentDictionary<string, CustomLogger>();
 
-        public CustomLoggerProvider(LogLevel logLevel)
-        {
-            _logLevel = logLevel;
-        }
+        public CustomLoggerProvider(LogLevel logLevel) => _logLevel = logLevel;
 
-        public ILogger CreateLogger(string categoryName)
-        {
-            return _loggers.GetOrAdd(categoryName, name => new CustomLogger(_logLevel));
-        }
+        public ILogger CreateLogger(string categoryName) => 
+            _loggers.GetOrAdd(categoryName, name => new CustomLogger(_logLevel));
 
-        public void Dispose()
-        {
-            _loggers.Clear();
-        }
+        public void Dispose() => _loggers.Clear();
     }
 }

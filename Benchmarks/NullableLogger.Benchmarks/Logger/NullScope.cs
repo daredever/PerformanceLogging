@@ -10,7 +10,6 @@ namespace NullableLogger.Benchmarks.Logger
         {
         }
 
-        /// <inheritdoc />
         public void Dispose()
         {
         }

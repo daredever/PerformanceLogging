@@ -4,36 +4,43 @@ using NullableLogger.Benchmarks.Logger;
 
 namespace NullableLogger.Benchmarks
 {
+    [CategoriesColumn]
     [MemoryDiagnoser]
     public class TraceLogging
     {
-        private readonly ILogger<TraceLogging> _logger;
-        private readonly INullableLogger _wrappedLogger;
-        private const int Length = 100;
+        private ILogger<TraceLogging> _logger;
+        private INullableLogger _wrappedLogger;
 
-        public TraceLogging()
+        [Params(10, 100, 1000)]
+        public int LogLinesCount { get; set; }
+
+        [Params(LogLevel.Trace, LogLevel.Debug)]
+        public LogLevel LogLevel { get; set; }
+
+        [GlobalSetup]
+        public void GlobalSetup()
         {
-            var loggerFactory = LoggerFactory.Create(builder => builder.SetMinimumLevel(LogLevel.Trace));
-            loggerFactory.AddCustomLogger(LogLevel.Debug);
+            var loggerFactory = LoggerFactory.Create(builder => builder.SetMinimumLevel(LogLevel));
+            loggerFactory.AddCustomLogger(LogLevel);
 
             // Create logger.
             _logger = loggerFactory.CreateLogger<TraceLogging>();
             _wrappedLogger = _logger.Wrap();
         }
 
-        [Benchmark]
+        [Benchmark(Baseline = true, Description = "logger.LogTrace()")]
         public void ClassicWayLog()
         {
-            for (var i = 0; i < Length; i++)
+            for (var i = 0; i < LogLinesCount; i++)
             {
                 _logger.LogTrace($"Log line #{i}.");
             }
         }
 
-        [Benchmark]
+        [Benchmark(Description = "if (isEnabled) { logger.LogTrace() }")]
         public void ClassicWayLogWithCheck()
         {
-            for (var i = 0; i < Length; i++)
+            for (var i = 0; i < LogLinesCount; i++)
             {
                 if (_logger.IsEnabled(LogLevel.Trace))
                 {
@@ -42,29 +49,19 @@ namespace NullableLogger.Benchmarks
             }
         }
 
-        [Benchmark]
+        [Benchmark(Description = "logger.Trace()?.Log()")]
         public void NewWayLogExtension()
         {
-            for (var i = 0; i < Length; i++)
+            for (var i = 0; i < LogLinesCount; i++)
             {
                 _logger.Trace()?.Log($"Log line #{i}.");
             }
         }
 
-        [Benchmark]
-        public void NewWayLogWrap()
+        [Benchmark(Description = "wrappedLogger.Trace?.Log()")]
+        public void NewWayLogWrapped()
         {
-            var wrappedLogger = _logger.Wrap();
-            for (var i = 0; i < Length; i++)
-            {
-                wrappedLogger.Trace?.Log($"Log line #{i}.");
-            }
-        }
-
-        [Benchmark]
-        public void NewWayLogWrapOnce()
-        {
-            for (var i = 0; i < Length; i++)
+            for (var i = 0; i < LogLinesCount; i++)
             {
                 _wrappedLogger.Trace?.Log($"Log line #{i}.");
             }
