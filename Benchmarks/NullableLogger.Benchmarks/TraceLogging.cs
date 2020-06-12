@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using Microsoft.Extensions.Logging;
+using NullableLogger.Benchmarks.Logger;
 
 namespace NullableLogger.Benchmarks
 {
@@ -12,12 +13,8 @@ namespace NullableLogger.Benchmarks
 
         public TraceLogging()
         {
-            var loggerFactory = LoggerFactory.Create(builder =>
-            {
-                builder
-                    .SetMinimumLevel(LogLevel.Debug)
-                    .AddConsole(options => options.IncludeScopes = true);
-            });
+            var loggerFactory = LoggerFactory.Create(builder => builder.SetMinimumLevel(LogLevel.Trace));
+            loggerFactory.AddCustomLogger(LogLevel.Debug);
 
             // Create logger.
             _logger = loggerFactory.CreateLogger<TraceLogging>();
