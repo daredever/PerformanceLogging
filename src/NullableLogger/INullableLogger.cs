@@ -19,7 +19,7 @@ namespace NullableLogger
         /// </code>
         /// </summary>
         LogWithLevel? Trace { get; }
-        
+
         /// <summary>
         /// Debug level shortcut.
         /// Usage:
@@ -28,7 +28,7 @@ namespace NullableLogger
         /// </code>
         /// </summary>
         LogWithLevel? Debug { get; }
-        
+
         /// <summary>
         /// Info level shortcut.
         /// Usage:
@@ -37,7 +37,7 @@ namespace NullableLogger
         /// </code>
         /// </summary>
         LogWithLevel? Info { get; }
-        
+
         /// <summary>
         /// Warn level shortcut.
         /// Usage:
@@ -46,7 +46,7 @@ namespace NullableLogger
         /// </code>
         /// </summary>
         LogWithLevel? Warn { get; }
-        
+
         /// <summary>
         /// Error level shortcut.
         /// Usage:
@@ -55,7 +55,7 @@ namespace NullableLogger
         /// </code>
         /// </summary>
         LogWithLevel? Error { get; }
-        
+
         /// <summary>
         /// Critical level shortcut.
         /// Usage:

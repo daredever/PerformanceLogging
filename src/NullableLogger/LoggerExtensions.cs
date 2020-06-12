@@ -14,7 +14,7 @@ namespace NullableLogger
         /// </summary>
         /// <returns>Wrapped logger</returns>
         /// <exception cref="ArgumentNullException">if logger is null</exception>
-        public static INullableLogger Wrap(this ILogger logger) => 
+        public static INullableLogger Wrap(this ILogger logger) =>
             new NullableLogger(logger);
 
         /// <summary>
