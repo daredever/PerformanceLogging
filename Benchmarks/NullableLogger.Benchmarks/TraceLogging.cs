@@ -4,7 +4,6 @@ using NullableLogger.Benchmarks.Logger;
 
 namespace NullableLogger.Benchmarks
 {
-    [CategoriesColumn]
     [MemoryDiagnoser]
     public class TraceLogging
     {
