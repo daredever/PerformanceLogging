@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using Microsoft.Extensions.Logging;
-using NullableLogger.Benchmarks.Logger;
+using NullableLogger.Benchmarks.Logging;
 
 namespace NullableLogger.Benchmarks
 {
@@ -10,23 +10,36 @@ namespace NullableLogger.Benchmarks
         private ILogger<TraceLogging> _logger;
         private INullableLogger _wrappedLogger;
 
-        [Params(10, 100, 1000)]
+        /// <summary>
+        /// Total count of writing log messages. 
+        /// </summary>
+        [Params(1, 10, 100, 1000)]
         public int LogLinesCount { get; set; }
 
+        /// <summary>
+        /// Current minimum log level.
+        /// </summary>
         [Params(LogLevel.Trace, LogLevel.Debug)]
-        public LogLevel LogLevel { get; set; }
+        public LogLevel MinimumLogLevel { get; set; }
 
+        /// <summary>
+        /// Configure logger factory and create loggers.
+        /// </summary>
         [GlobalSetup]
         public void GlobalSetup()
         {
-            var loggerFactory = LoggerFactory.Create(builder => builder.SetMinimumLevel(LogLevel));
-            loggerFactory.AddCustomLogger(LogLevel);
+            // Configure logger factory.
+            var loggerFactory = LoggerFactory.Create(builder => builder.SetMinimumLevel(MinimumLogLevel));
+            loggerFactory.AddLogger();
 
             // Create logger.
             _logger = loggerFactory.CreateLogger<TraceLogging>();
             _wrappedLogger = _logger.Wrap();
         }
 
+        /// <summary>
+        /// Writes logs in classic way using default logger's LogTrace() extension.
+        /// </summary>
         [Benchmark(Baseline = true, Description = "logger.LogTrace()")]
         public void ClassicWayLog()
         {
@@ -36,7 +49,11 @@ namespace NullableLogger.Benchmarks
             }
         }
 
-        [Benchmark(Description = "if (isEnabled) { logger.LogTrace() }")]
+        /// <summary>
+        /// Checks if <see cref="LogLevel.Trace"/> is enabled and writes logs in classic way
+        /// with using default logger's LogTrace() extension.
+        /// </summary>
+        [Benchmark(Description = "if(TraceEnabled){logger.LogTrace()}")]
         public void ClassicWayLogWithCheck()
         {
             for (var i = 0; i < LogLinesCount; i++)
@@ -48,6 +65,9 @@ namespace NullableLogger.Benchmarks
             }
         }
 
+        /// <summary>
+        /// Writes logs in new way using NullableLogger's Trace() extension.
+        /// </summary>
         [Benchmark(Description = "logger.Trace()?.Log()")]
         public void NewWayLogExtension()
         {
@@ -57,6 +77,9 @@ namespace NullableLogger.Benchmarks
             }
         }
 
+        /// <summary>
+        /// Writes logs in new way using NullableLogger's wrapper for default logger.
+        /// </summary>
         [Benchmark(Description = "wrappedLogger.Trace?.Log()")]
         public void NewWayLogWrapped()
         {
