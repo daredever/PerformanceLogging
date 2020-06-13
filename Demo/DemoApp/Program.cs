@@ -28,6 +28,7 @@ namespace DemoApp
 
                 // Write trace logs in new way with extension method. 
                 logger.Trace()?.Log("Example log message in new way");
+                logger.Trace()?.Log("Example log message in {way} way with format", "new");
             }
 
             // Create wrapped logger.
@@ -42,6 +43,7 @@ namespace DemoApp
 
                 // Write trace logs in new way by wrapped logger. 
                 wrappedLogger.Trace?.Log("Example log message in new way by wrapped logger");
+                wrappedLogger.Trace?.Log("Example log message in {way} way by wrapped logger with format", "new");
             }
 
             await Task.Delay(1000);
