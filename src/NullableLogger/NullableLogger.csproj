@@ -8,10 +8,10 @@
         <!-- Properties related to NuGet packaging: -->
         <IsPackable>True</IsPackable>
         <PackageId>NullableLogger</PackageId>
-        <Version>0.0.5</Version>
+        <Version>0.0.6</Version>
         <Authors>Roman Shcherbakov</Authors>
-        <Title>NullableLogger: a simple logging wrapper library</Title>
-        <Description>NullableLogger wrapper for increase performance by more accurate work with strings.</Description>
+        <Title>NullableLogger: a simple logging helper library</Title>
+        <Description>Extensions and wrapper for default .NET ILogger designed to increase performance by more accurate work with strings.</Description>
         <PackageTags>log;logging</PackageTags>
         <PackageProjectUrl>https://github.com/daredever/NullableLogger</PackageProjectUrl>
         <RepositoryUrl>https://github.com/daredever/NullableLogger</RepositoryUrl>

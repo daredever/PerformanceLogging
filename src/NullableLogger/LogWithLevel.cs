@@ -20,9 +20,9 @@ namespace NullableLogger
         }
 
         /// <summary>
-        /// Formats and writes a log message.
+        /// Writes a log message.
         /// </summary>
-        /// <param name="message">Formatted string of the log message</param>
+        /// <param name="message">Log message</param>
         public void Log(string message) => _logger.Log(_logLevel, message);
 
         /// <summary>
