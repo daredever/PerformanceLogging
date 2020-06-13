@@ -5,10 +5,10 @@ using NullableLogger.Benchmarks.Logging;
 namespace NullableLogger.Benchmarks
 {
     /// <summary>
-    /// Benchmarks for comparing classic and new way logging with specified log message.
+    /// Benchmarks for comparing classic and new way logging with log message formatting.
     /// </summary>
     [MemoryDiagnoser]
-    public class TraceLogging
+    public class TraceLoggingWithFormat
     {
         private ILogger<TraceLogging> _logger;
         private INullableLogger _wrappedLogger;
@@ -48,7 +48,7 @@ namespace NullableLogger.Benchmarks
         {
             for (var i = 0; i < LogLinesCount; i++)
             {
-                _logger.LogTrace($"Log line #{i}.");
+                _logger.LogTrace("Log line #{index}.", i);
             }
         }
 
@@ -63,7 +63,7 @@ namespace NullableLogger.Benchmarks
             {
                 if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogTrace($"Log line #{i}.");
+                    _logger.LogTrace("Log line #{index}.", i);
                 }
             }
         }
@@ -76,7 +76,7 @@ namespace NullableLogger.Benchmarks
         {
             for (var i = 0; i < LogLinesCount; i++)
             {
-                _logger.Trace()?.Log($"Log line #{i}.");
+                _logger.Trace()?.Log("Log line #{index}.", i);
             }
         }
 
@@ -88,7 +88,7 @@ namespace NullableLogger.Benchmarks
         {
             for (var i = 0; i < LogLinesCount; i++)
             {
-                _wrappedLogger.Trace?.Log($"Log line #{i}.");
+                _wrappedLogger.Trace?.Log("Log line #{index}.", i);
             }
         }
     }

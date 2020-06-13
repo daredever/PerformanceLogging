@@ -7,6 +7,7 @@ namespace NullableLogger.Benchmarks
         public static void Main(string[] args)
         {
             BenchmarkRunner.Run<TraceLogging>();
+            BenchmarkRunner.Run<TraceLoggingWithFormat>();
         }
     }
 }
