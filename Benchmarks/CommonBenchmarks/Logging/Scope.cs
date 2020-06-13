@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NullableLogger.Benchmarks.Logging
+namespace CommonBenchmarks.Logging
 {
     internal class Scope : IDisposable
     {

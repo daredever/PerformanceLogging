@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace NullableLogger
+namespace PerformanceLogging
 {
-    internal sealed class NullableLogger : INullableLogger
+    internal sealed class PerformanceLogger : IPerformanceLogger
     {
         private readonly ILogger _logger;
         private readonly LogWithLevel? _trace;
@@ -13,7 +13,7 @@ namespace NullableLogger
         private readonly LogWithLevel? _error;
         private readonly LogWithLevel? _critical;
 
-        public NullableLogger(ILogger logger)
+        public PerformanceLogger(ILogger logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 

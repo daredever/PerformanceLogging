@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace NullableLogger.Benchmarks.Logging
+namespace CommonBenchmarks.Logging
 {
     public static class LoggerExtensions
     {

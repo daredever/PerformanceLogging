@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Running;
+using CommonBenchmarks.Trace;
 
-namespace NullableLogger.Benchmarks
+namespace CommonBenchmarks
 {
     public static class Program
     {

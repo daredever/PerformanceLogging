@@ -5,15 +5,15 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EF16EC91-54FE-4B8F-8E98-ACBA6B559B9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullableLogger", "src\NullableLogger\NullableLogger.csproj", "{F45CB150-9BA4-4052-9E2C-3D430821E9E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceLogging", "src\PerformanceLogging\PerformanceLogging.csproj", "{F45CB150-9BA4-4052-9E2C-3D430821E9E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{9B043CB9-C6BC-43B0-89CE-5C2C803EFFFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "Demo\DemoApp\DemoApp.csproj", "{8CF6D865-7A20-4657-A91E-E9CBB95AA61A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicUsageExamples", "Demo\BasicUsageExamples\BasicUsageExamples.csproj", "{8CF6D865-7A20-4657-A91E-E9CBB95AA61A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Benchmarks", "Benchmarks", "{65B657E7-B6C3-4AB1-929E-172ED5C486F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullableLogger.Benchmarks", "Benchmarks\NullableLogger.Benchmarks\NullableLogger.Benchmarks.csproj", "{6C4961B3-278E-4E07-BFBD-3B253AEDCAD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonBenchmarks", "Benchmarks\CommonBenchmarks\CommonBenchmarks.csproj", "{6C4961B3-278E-4E07-BFBD-3B253AEDCAD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

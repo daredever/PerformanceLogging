@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace NullableLogger
+namespace PerformanceLogging
 {
     /// <summary>
     /// Special struct for using shortcut:

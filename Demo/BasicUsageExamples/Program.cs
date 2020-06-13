@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using NullableLogger;
 
-namespace DemoApp
+// Add performance logging namespace.
+using PerformanceLogging;
+
+namespace BasicUsageExamples
 {
     class Program
     {

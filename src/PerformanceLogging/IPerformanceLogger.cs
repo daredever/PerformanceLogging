@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace NullableLogger
+namespace PerformanceLogging
 {
     /// <summary>
     /// Logger wrapper for using shortcuts with all log levels.
@@ -9,7 +9,7 @@ namespace NullableLogger
     ///   logger.Trace?.Log($"message: {GetMessage()}");
     /// </code>
     /// </summary>
-    public interface INullableLogger : ILogger
+    public interface IPerformanceLogger : ILogger
     {
         /// <summary>
         /// Trace level shortcut.

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace NullableLogger
+namespace PerformanceLogging
 {
     public static class LoggerExtensions
     {
@@ -14,8 +14,8 @@ namespace NullableLogger
         /// </summary>
         /// <returns>Wrapped logger</returns>
         /// <exception cref="ArgumentNullException">if logger is null</exception>
-        public static INullableLogger Wrap(this ILogger logger) =>
-            new NullableLogger(logger);
+        public static IPerformanceLogger Wrap(this ILogger logger) =>
+            new PerformanceLogger(logger);
 
         /// <summary>
         /// One-line shortcut builder. Usage:

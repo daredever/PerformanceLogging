@@ -1,17 +1,18 @@
 ﻿using BenchmarkDotNet.Attributes;
+using CommonBenchmarks.Logging;
 using Microsoft.Extensions.Logging;
-using NullableLogger.Benchmarks.Logging;
+using PerformanceLogging;
 
-namespace NullableLogger.Benchmarks
+namespace CommonBenchmarks.Trace
 {
     /// <summary>
-    /// Benchmarks for comparing classic and new way logging with specified log message.
+    /// Benchmarks for comparing classic and new way logging with log message formatting.
     /// </summary>
     [MemoryDiagnoser]
-    public class TraceLogging
+    public class TraceLoggingWithFormat
     {
         private ILogger<TraceLogging> _logger;
-        private INullableLogger _wrappedLogger;
+        private IPerformanceLogger _wrappedLogger;
 
         /// <summary>
         /// Total count of writing log messages. 
@@ -48,7 +49,7 @@ namespace NullableLogger.Benchmarks
         {
             for (var i = 0; i < LogLinesCount; i++)
             {
-                _logger.LogTrace($"Log line #{i}.");
+                _logger.LogTrace("Log line #{index}.", i);
             }
         }
 
@@ -63,32 +64,32 @@ namespace NullableLogger.Benchmarks
             {
                 if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogTrace($"Log line #{i}.");
+                    _logger.LogTrace("Log line #{index}.", i);
                 }
             }
         }
 
         /// <summary>
-        /// Writes logs in new way using NullableLogger's Trace() extension.
+        /// Writes logs in new way using PerformanceLogging's Trace() extension.
         /// </summary>
         [Benchmark(Description = "logger.Trace()?.Log()")]
         public void NewWayLogExtension()
         {
             for (var i = 0; i < LogLinesCount; i++)
             {
-                _logger.Trace()?.Log($"Log line #{i}.");
+                _logger.Trace()?.Log("Log line #{index}.", i);
             }
         }
 
         /// <summary>
-        /// Writes logs in new way using NullableLogger's wrapper for default logger.
+        /// Writes logs in new way using PerformanceLogging's wrapper for default logger.
         /// </summary>
         [Benchmark(Description = "wrappedLogger.Trace?.Log()")]
         public void NewWayLogWrapped()
         {
             for (var i = 0; i < LogLinesCount; i++)
             {
-                _wrappedLogger.Trace?.Log($"Log line #{i}.");
+                _wrappedLogger.Trace?.Log("Log line #{index}.", i);
             }
         }
     }
