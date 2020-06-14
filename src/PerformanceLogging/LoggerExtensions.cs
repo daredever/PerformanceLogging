@@ -3,6 +3,9 @@ using Microsoft.Extensions.Logging;
 
 namespace PerformanceLogging
 {
+    /// <summary>
+    /// ILogger extension methods to get logging shortcuts.
+    /// </summary>
     public static class LoggerExtensions
     {
         /// <summary>
