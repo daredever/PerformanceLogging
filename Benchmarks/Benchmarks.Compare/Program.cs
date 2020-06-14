@@ -1,7 +1,6 @@
 ﻿using BenchmarkDotNet.Running;
-using CommonBenchmarks.Trace;
 
-namespace CommonBenchmarks
+namespace Benchmarks.Compare
 {
     public static class Program
     {

@@ -39,8 +39,8 @@ See also, some usage examples in [Demo](/Demo) folder.
 
 #### Trace logging with specified log message (1000 log messages). 
 
-See benchmark's full [report](/Benchmarks/Reports/TraceLogging.md) 
-and [source](/Benchmarks/CommonBenchmarks/Trace/TraceLogging.cs).
+See benchmark's full [report](/Benchmarks/Reports/Compare/TraceLogging.md) 
+and [source](/Benchmarks/Benchmarks.Compare/TraceLogging.cs).
 
 |                              Method | MinLogLevel |          Mean |      Error | Ratio |   Gen 0 | Gen 1 | Gen 2 | Allocated |
 |------------------------------------ |-------------- |--------------:|-----------:|------:|--------:|------:|------:|----------:|
@@ -56,8 +56,8 @@ and [source](/Benchmarks/CommonBenchmarks/Trace/TraceLogging.cs).
 
 #### Trace logging with formatted log message (1000 log messages). 
 
-See benchmark's full [report](/Benchmarks/Reports/TraceLoggingWithFormat.md) 
-and [source](/Benchmarks/CommonBenchmarks/Trace/TraceLoggingWithFormat.cs).
+See benchmark's full [report](/Benchmarks/Reports/Compare/TraceLoggingWithFormat.md) 
+and [source](/Benchmarks/Benchmarks.Compare/TraceLoggingWithFormat.cs).
 
 |                              Method | MinLogLevel |          Mean |       Error |      Ratio |  Gen 0 | Gen 1 | Gen 2 | Allocated |
 |------------------------------------ |-------------- |--------------:|------------:|------:|-------:|------:|------:|----------:|

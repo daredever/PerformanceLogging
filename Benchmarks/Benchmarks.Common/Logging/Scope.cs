@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CommonBenchmarks.Logging
+namespace Benchmarks.Common.Logging
 {
     internal class Scope : IDisposable
     {

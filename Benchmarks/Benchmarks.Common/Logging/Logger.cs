@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace CommonBenchmarks.Logging
+namespace Benchmarks.Common.Logging
 {
     public class Logger : ILogger
     {

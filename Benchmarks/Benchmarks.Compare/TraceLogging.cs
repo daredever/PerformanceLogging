@@ -1,15 +1,15 @@
 ﻿using BenchmarkDotNet.Attributes;
-using CommonBenchmarks.Logging;
+using Benchmarks.Common.Logging;
 using Microsoft.Extensions.Logging;
 using PerformanceLogging;
 
-namespace CommonBenchmarks.Trace
+namespace Benchmarks.Compare
 {
     /// <summary>
-    /// Benchmarks for comparing classic and new way logging with log message formatting.
+    /// Benchmarks for comparing classic and new way logging with specified log message.
     /// </summary>
     [MemoryDiagnoser]
-    public class TraceLoggingWithFormat
+    public class TraceLogging
     {
         private ILogger<TraceLogging> _logger;
         private IPerformanceLogger _wrappedLogger;
@@ -49,7 +49,7 @@ namespace CommonBenchmarks.Trace
         {
             for (var i = 0; i < LogLinesCount; i++)
             {
-                _logger.LogTrace("Log line #{index}.", i);
+                _logger.LogTrace($"Log line #{i}.");
             }
         }
 
@@ -64,7 +64,7 @@ namespace CommonBenchmarks.Trace
             {
                 if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogTrace("Log line #{index}.", i);
+                    _logger.LogTrace($"Log line #{i}.");
                 }
             }
         }
@@ -77,7 +77,7 @@ namespace CommonBenchmarks.Trace
         {
             for (var i = 0; i < LogLinesCount; i++)
             {
-                _logger.Trace()?.Log("Log line #{index}.", i);
+                _logger.Trace()?.Log($"Log line #{i}.");
             }
         }
 
@@ -89,7 +89,7 @@ namespace CommonBenchmarks.Trace
         {
             for (var i = 0; i < LogLinesCount; i++)
             {
-                _wrappedLogger.Trace?.Log("Log line #{index}.", i);
+                _wrappedLogger.Trace?.Log($"Log line #{i}.");
             }
         }
     }

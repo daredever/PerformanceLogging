@@ -1,9 +1,9 @@
 ﻿using BenchmarkDotNet.Attributes;
-using CommonBenchmarks.Logging;
+using Benchmarks.Common.Logging;
 using Microsoft.Extensions.Logging;
 using PerformanceLogging;
 
-namespace CommonBenchmarks.Trace
+namespace Benchmarks.Strings
 {
     /// <summary>
     /// Benchmarks for comparing classic and new way logging with specified log message.
@@ -12,19 +12,18 @@ namespace CommonBenchmarks.Trace
     public class TraceLogging
     {
         private ILogger<TraceLogging> _logger;
-        private IPerformanceLogger _wrappedLogger;
 
         /// <summary>
         /// Total count of writing log messages. 
         /// </summary>
-        [Params(1, 10, 100, 1000)]
+        [Params(10, 100, 1000)]
         public int LogLinesCount { get; set; }
 
         /// <summary>
-        /// Current minimum log level.
+        /// Total count of log message. 
         /// </summary>
-        [Params(LogLevel.Trace, LogLevel.Debug)]
-        public LogLevel MinimumLogLevel { get; set; }
+        [Params(1, 10, 50, 100, 200, 500)]
+        public int MessageCharsCount { get; set; }
 
         /// <summary>
         /// Configure logger factory and create loggers.
@@ -33,12 +32,11 @@ namespace CommonBenchmarks.Trace
         public void GlobalSetup()
         {
             // Configure logger factory.
-            var loggerFactory = LoggerFactory.Create(builder => builder.SetMinimumLevel(MinimumLogLevel));
+            var loggerFactory = LoggerFactory.Create(builder => builder.SetMinimumLevel(LogLevel.Debug));
             loggerFactory.AddLogger();
 
             // Create logger.
             _logger = loggerFactory.CreateLogger<TraceLogging>();
-            _wrappedLogger = _logger.Wrap();
         }
 
         /// <summary>
@@ -49,23 +47,7 @@ namespace CommonBenchmarks.Trace
         {
             for (var i = 0; i < LogLinesCount; i++)
             {
-                _logger.LogTrace($"Log line #{i}.");
-            }
-        }
-
-        /// <summary>
-        /// Checks if <see cref="LogLevel.Trace"/> is enabled and writes logs in classic way
-        /// with using default logger's LogTrace() extension.
-        /// </summary>
-        [Benchmark(Description = "if(TraceEnabled){logger.LogTrace()}")]
-        public void ClassicWayLogWithCheck()
-        {
-            for (var i = 0; i < LogLinesCount; i++)
-            {
-                if (_logger.IsEnabled(LogLevel.Trace))
-                {
-                    _logger.LogTrace($"Log line #{i}.");
-                }
+                _logger.LogTrace(new string('a', MessageCharsCount));
             }
         }
 
@@ -77,19 +59,7 @@ namespace CommonBenchmarks.Trace
         {
             for (var i = 0; i < LogLinesCount; i++)
             {
-                _logger.Trace()?.Log($"Log line #{i}.");
-            }
-        }
-
-        /// <summary>
-        /// Writes logs in new way using PerformanceLogging's wrapper for default logger.
-        /// </summary>
-        [Benchmark(Description = "wrappedLogger.Trace?.Log()")]
-        public void NewWayLogWrapped()
-        {
-            for (var i = 0; i < LogLinesCount; i++)
-            {
-                _wrappedLogger.Trace?.Log($"Log line #{i}.");
+                _logger.Trace()?.Log(new string('a', MessageCharsCount));
             }
         }
     }
